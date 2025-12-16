@@ -1,20 +1,3 @@
 # Add patterns of files dvc should ignore, which could improve
 # the performance. Learn more at
 # https://dvc.org/doc/user-guide/dvcignore
-
-# Ignorer les fichiers Python
-*.pyc
-__pycache__
-
-# Ignorer les logs
-logs/
-*.log
-
-# Ignorer les notebooks
-notebooks/
-*.ipynb
-
-# Ignorer les fichiers temporaires
-*.tmp
-*.bak
-.DS_Store

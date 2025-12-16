@@ -1,0 +1,4 @@
+[core]
+    remote = local
+['remote "local"']
+    url = C:\Users\PC\Desktop\Master_S3\Deploiement_Projet_IA\Projet\dvc-storage
