@@ -69,3 +69,11 @@ htmlcov/
 # Temporary files
 *.tmp
 *.bak
+# Docker
+.dockerignore
+
+# Mac / Linux
+*.pid
+
+# Local credentials
+*.env
