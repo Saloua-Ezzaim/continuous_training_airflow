@@ -1,0 +1,78 @@
+======================================================================
+               RAPPORT DE MONITORING DES MODELES
+======================================================================
+
+Date du rapport: 2025-12-31 01:49:43
+Nombre total d'entrainements: 240
+Premiere entrainement: 2025-12-16 12:22:53
+Dernier entrainement: 2025-12-31 00:49:19
+
+----------------------------------------------------------------------
+
+PERFORMANCES DU DERNIER MODELE
+----------------------------------------------------------------------
+Accuracy       : 0.8027
+Precision      : 0.6678
+Recall         : 0.5053
+F1-Score       : 0.5753
+ROC AUC        : 0.8520
+Specificity    : 0.9096
+
+Matrice de Confusion:
+  TN:   956  |  FP:    95
+  FN:   187  |  TP:   191
+
+----------------------------------------------------------------------
+
+EVOLUTION DES METRIQUES
+----------------------------------------------------------------------
+
+Accuracy:
+  Minimum    : 0.8027
+  Maximum    : 0.8195
+  Moyenne    : 0.8041
+  Ecart-type : 0.0024
+  Tendance   : ↓ -0.0000 (-0.00%)
+
+Precision:
+  Minimum    : 0.6633
+  Maximum    : 0.6993
+  Moyenne    : 0.6676
+  Ecart-type : 0.0041
+  Tendance   : ↑ +0.0046 (+0.69%)
+
+Recall:
+  Minimum    : 0.5053
+  Maximum    : 0.5632
+  Moyenne    : 0.5206
+  Ecart-type : 0.0141
+  Tendance   : ↓ -0.0161 (-3.09%)
+
+F1-Score:
+  Minimum    : 0.5753
+  Maximum    : 0.6239
+  Moyenne    : 0.5849
+  Ecart-type : 0.0097
+  Tendance   : ↓ -0.0085 (-1.46%)
+
+ROC AUC:
+  Minimum    : 0.8404
+  Maximum    : 0.8661
+  Moyenne    : 0.8467
+  Ecart-type : 0.0051
+  Tendance   : ↑ +0.0116 (+1.38%)
+
+Specificity:
+  Minimum    : 0.9039
+  Maximum    : 0.9123
+  Moyenne    : 0.9064
+  Ecart-type : 0.0025
+  Tendance   : ↑ +0.0053 (+0.58%)
+
+----------------------------------------------------------------------
+
+ALERTES
+----------------------------------------------------------------------
+⚠ F1-Score en dessous du seuil: 0.5753 < 0.60
+
+======================================================================

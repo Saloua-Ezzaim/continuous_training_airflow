@@ -1,0 +1,24 @@
+{
+    "accuracy": 0.8110566829951015,
+    "precision": 0.6741935483870968,
+    "recall": 0.5529100529100529,
+    "f1_score": 0.6075581395348837,
+    "roc_auc": 0.8592597626850719,
+    "confusion_matrix": [
+        [
+            950,
+            101
+        ],
+        [
+            169,
+            209
+        ]
+    ],
+    "true_negatives": 950,
+    "false_positives": 101,
+    "false_negatives": 169,
+    "true_positives": 209,
+    "specificity": 0.9039010466222646,
+    "timestamp": "2025-12-30 23:51:08",
+    "evaluation_date": "2025-12-30"
+}
