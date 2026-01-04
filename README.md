@@ -1,40 +1,36 @@
-Continuous Training with Apache Airflow
-📌 Description
+# 🧠 Continuous Training with Apache Airflow
 
-Ce projet met en place une pipeline de Continuous Training (entraînement continu) pour un modèle de Machine Learning en utilisant Apache Airflow.
-L’objectif est de surveiller les performances du modèle en production et de déclencher automatiquement un ré-entraînement lorsque les performances se dégradent.
+## 📌 Description
+Ce projet met en place une **pipeline de Continuous Training (entraînement continu)** pour un modèle de Machine Learning en utilisant **Apache Airflow**.  
+L’objectif est de surveiller les performances du modèle en production et de déclencher automatiquement un **ré-entraînement** lorsque les performances se dégradent.
 
-Le projet s’inscrit dans une démarche MLOps, combinant automatisation, monitoring, traçabilité des modèles et exposition du modèle via une API connectée à une interface Web.
+Le projet s’inscrit dans une démarche **MLOps**, combinant automatisation, monitoring, traçabilité des modèles et **exposition du modèle via une API connectée à une interface Web**.
 
-🎯 Objectifs du projet
+---
 
-Automatiser le cycle de vie du modèle de Machine Learning
+## 🎯 Objectifs du projet
+- Automatiser le cycle de vie du modèle de Machine Learning  
+- Surveiller les métriques de performance (accuracy, précision, etc.)  
+- Détecter la dérive de performance du modèle  
+- Lancer automatiquement le ré-entraînement via Airflow  
+- Centraliser les métriques et résultats  
+- Permettre aux utilisateurs finaux d’obtenir des prédictions via un **formulaire Web connecté à une API**
 
-Surveiller les métriques de performance (accuracy, précision, etc.)
+---
 
-Détecter la dérive de performance du modèle
-
-Lancer automatiquement le ré-entraînement via Airflow
-
-Centraliser les métriques et résultats
-
-Permettre aux utilisateurs finaux d’obtenir des prédictions via un formulaire Web connecté à une API
-
-🏗️ Architecture du projet
-
+## 🏗️ Architecture du projet
 Le projet est organisé autour des composants suivants :
 
-Airflow DAGs : orchestration des tâches (entraînement, évaluation, monitoring)
+- **Airflow DAGs** : orchestration des tâches (entraînement, évaluation, monitoring)  
+- **API REST** : liaison entre le modèle ML et l’interface Web, exposition des prédictions et des métriques  
+- **Interface Web** : formulaire permettant au client de saisir des données et d’obtenir une prédiction du modèle  
+- **Models** : stockage des modèles entraînés et des fichiers de métriques  
+- **Docker** : déploiement de l’environnement Airflow  
 
-API REST : liaison entre le modèle ML et l’interface Web, exposition des prédictions et des métriques
+---
 
-Interface Web : formulaire permettant au client de saisir des données et d’obtenir une prédiction du modèle
-
-Models : stockage des modèles entraînés et des fichiers de métriques
-
-Docker : déploiement de l’environnement Airflow
-
-📁 Structure du projet
+## 📁 Structure du projet
+```text
 continuous_training_airflow/
 │
 ├── dags/                # DAGs Airflow
@@ -44,7 +40,6 @@ continuous_training_airflow/
 ├── data/                # Données d'entraînement
 ├── docker-compose.yml   # Déploiement Airflow avec Docker
 └── README.md
-
 ⚙️ Technologies utilisées
 
 Python
@@ -95,4 +90,4 @@ Ikram Abhih
 
 Karima Er-remyty
 
-Master en Intelligence Artificielle
+🎓 Master en Intelligence Artificielle
