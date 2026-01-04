@@ -30,7 +30,7 @@ Le projet est organisé autour des composants suivants :
 ---
 
 ## 📁 Structure du projet
-
+```text
 continuous_training_airflow/
 │
 ├── dags/                # DAGs Airflow
@@ -40,6 +40,9 @@ continuous_training_airflow/
 ├── data/                # Données d'entraînement
 ├── docker-compose.yml   # Déploiement Airflow avec Docker
 └── README.md
+
+---
+
 ⚙️ Technologies utilisées
 
 Python
@@ -91,4 +94,3 @@ Ikram Abhih
 Karima Er-remyty
 
 🎓 Master en Intelligence Artificielle
-
