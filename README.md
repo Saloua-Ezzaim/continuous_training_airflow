@@ -30,7 +30,7 @@ Le projet est organisé autour des composants suivants :
 ---
 
 ## 📁 Structure du projet
-```text
+
 continuous_training_airflow/
 │
 ├── dags/                # DAGs Airflow
@@ -91,3 +91,4 @@ Ikram Abhih
 Karima Er-remyty
 
 🎓 Master en Intelligence Artificielle
+
