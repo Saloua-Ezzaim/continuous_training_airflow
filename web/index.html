@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Prédiction du Churn Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f8; margin:0; padding:0; }
+        header { background: #1f2937; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 900px; margin: 30px auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { margin-top:0; color:#1f2937; }
+        form { display: grid; grid-template-columns: repeat(2, 1fr); gap:15px; }
+        label { font-weight: bold; font-size: 14px; }
+        input, select { padding: 8px; width:100%; border-radius:4px; border:1px solid #ccc; }
+        button { grid-column: span 2; padding:12px; background:#2563eb; color:white; border:none; font-size:16px; border-radius:5px; cursor:pointer; }
+        button:hover { background:#1d4ed8; }
+        .result { margin-top:25px; padding:15px; border-radius:5px; display:none; }
+        .green { background:#dcfce7; color:#166534; }
+        .orange { background:#ffedd5; color:#9a3412; }
+        .red { background:#fee2e2; color:#991b1b; }
+        ul { padding-left:20px; }
+        footer { text-align:center; margin-top:30px; color:#666; font-size:14px; }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Plateforme de Prédiction du Churn Client</h1>
+    <p>API Flask – Random Forest</p>
+</header>
+
+<div class="container">
+    <h2>Informations Client</h2>
+
+    <form id="churnForm">
+        <div>
+            <label>Genre</label>
+            <select id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Senior Citizen</label>
+            <select id="SeniorCitizen">
+                <option value="0">Non</option>
+                <option value="1">Oui</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Partner</label>
+            <select id="Partner">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Dependents</label>
+            <select id="Dependents">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Tenure (mois)</label>
+            <input type="number" id="tenure" required value="9">
+        </div>
+
+        <div>
+            <label>Monthly Charges</label>
+            <input type="number" step="0.01" id="MonthlyCharges" required value="9">
+        </div>
+
+        <div>
+            <label>Total Charges</label>
+            <input type="number" step="0.01" id="TotalCharges">
+        </div>
+
+        <div>
+            <label>Internet Service</label>
+            <select id="InternetService">
+                <option value="DSL">DSL</option>
+                <option value="Fiber optic">Fiber optic</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Contract</label>
+            <select id="Contract">
+                <option value="Month-to-month">Month-to-month</option>
+                <option value="One year">One year</option>
+                <option value="Two year">Two year</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Payment Method</label>
+            <select id="PaymentMethod">
+                <option value="Electronic check">Electronic check</option>
+                <option value="Mailed check">Mailed check</option>
+                <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                <option value="Credit card (automatic)">Credit card (automatic)</option>
+            </select>
+        </div>
+
+        <button type="submit">🔍 Prédire le Risque de Churn</button>
+    </form>
+
+    <div id="result" class="result"></div>
+</div>
+
+<footer>
+    © Projet Machine Learning – API de prédiction du churn
+</footer>
+
+<script>
+document.getElementById("churnForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    // Préparer les données
+    const data = {
+        gender: gender.value,
+        SeniorCitizen: parseInt(SeniorCitizen.value),
+        Partner: Partner.value,
+        Dependents: Dependents.value,
+        tenure: parseInt(tenure.value),
+        MonthlyCharges: parseFloat(MonthlyCharges.value),
+        TotalCharges: TotalCharges.value ? parseFloat(TotalCharges.value) : parseFloat(MonthlyCharges.value) * parseInt(tenure.value),
+        InternetService: InternetService.value,
+        Contract: Contract.value,
+        PaymentMethod: PaymentMethod.value
+    };
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.style.display = "block";
+    resultDiv.className = "result";
+    resultDiv.innerHTML = "⏳ Prédiction en cours...";
+
+    try {
+        const response = await fetch("http://127.0.0.1:5000/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if(!response.ok) throw new Error("Erreur réseau");
+
+        const res = await response.json();
+
+        // Définir la couleur selon le risque
+        resultDiv.className = "result " + (res.risk_color || "red");
+
+        resultDiv.innerHTML = `
+            <h3>Résultat : ${res.prediction}</h3>
+            <p><strong>Probabilité de churn :</strong> ${res.churn_probability_percent}</p>
+            <p><strong>Niveau de risque :</strong> ${res.risk_level}</p>
+            <p>${res.message}</p>
+        `;
+    } catch (error) {
+        console.error(error);
+        resultDiv.className = "result red";
+        resultDiv.innerHTML = "❌ Erreur lors de la prédiction";
+    }
+});
+</script>
+
+</body>
+</html>
